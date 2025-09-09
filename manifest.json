@@ -1,0 +1,60 @@
+{
+  "manifest_version": 3,
+  "name": "DeepTrust - Deepfake Detection",
+  "version": "1.0.0",
+  "description": "AI-powered deepfake detection for social media posts using PyDeepFakeDet",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://*/*",
+    "http://*/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.instagram.com/*",
+        "https://instagram.com/*",
+        "https://www.facebook.com/*",
+        "https://facebook.com/*",
+        "https://www.twitter.com/*",
+        "https://twitter.com/*",
+        "https://x.com/*",
+        "https://www.tiktok.com/*",
+        "https://tiktok.com/*",
+        "https://www.linkedin.com/*",
+        "https://linkedin.com/*"
+      ],
+      "js": ["content.js"],
+      "css": ["content.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "DeepTrust Deepfake Detector",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["icons/*.png", "content.css"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}
